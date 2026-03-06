@@ -1,10 +1,11 @@
-import { itemSlideUp, list } from "@/helpers/animation";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
 import { paypalValidation } from "helpers/yupValidation";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { itemSlideUp, list } from "@/helpers/animation";
 
 const Paypal = () => {
   const {

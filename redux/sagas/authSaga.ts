@@ -5,7 +5,7 @@ import { clearCart } from '@/redux/slices/cartSlice';
 import { clearProfile, setProfile } from '@/redux/slices/profileSlice';
 import toast from 'react-hot-toast';
 import { call, put } from 'redux-saga/effects'
-import { apiCreateAccount, apiSignIn, apiSignOut } from "@/pages/services/authService";
+import { apiCreateAccount, apiSignIn, apiSignOut } from "@/services/authService";
 
 function* handleError(err) {
     yield put(authLoading(false));

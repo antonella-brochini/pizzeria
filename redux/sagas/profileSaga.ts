@@ -1,4 +1,4 @@
-import { apiUpdateProfile } from "@/pages/services/profileService";
+import { apiUpdateProfile } from "@/services/profileService";
 import { call, put } from "@redux-saga/core/effects";
 import { updateProfile, updateProfileSuccess } from "@/redux/slices/profileSlice";
 

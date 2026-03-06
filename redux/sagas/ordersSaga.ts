@@ -1,4 +1,4 @@
-import { apiSetOrders } from "@/pages/services/ordersService";
+import { apiSetOrders } from "@/services/ordersService";
 import {call, put } from "@redux-saga/core/effects";
 import { clearCart } from "@/redux/slices/cartSlice";
 import { setOrders } from "@/redux/slices/ordersSlice";

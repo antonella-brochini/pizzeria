@@ -1,17 +1,22 @@
 import { editReview } from "@/redux/slices/reviewsSlice";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDialog } from "react-st-modal";
 
-const EditReview = ({ dispatch, uid, item_id, review, edit = false }) => {
+const EditReview = ({
+  dispatch,
+  uid,
+  item_id,
+  review,
+  edit = false,
+  onClose,
+}) => {
   const [showInput, setShowInput] = useState(false);
 
-  const { register, handleSubmit, reset } = useForm();
-
-  const dialog = useDialog();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = ({ reviewContent }) => {
     dispatch(editReview({ uid, content: reviewContent, item_id }));
+    onClose?.();
   };
 
   return (
@@ -19,7 +24,9 @@ const EditReview = ({ dispatch, uid, item_id, review, edit = false }) => {
       {!edit && (
         <h2 className="text-red-400 font-main">You already added a review</h2>
       )}
-      <p className="text-poppins text-xl">Your review : "{review.content}"</p>
+
+      <p className="text-poppins text-xl">Your review : &quot;{review.content}&quot;</p>
+
       <form
         className="flex flex-col space-y-4"
         onSubmit={handleSubmit(onSubmit)}
@@ -30,41 +37,38 @@ const EditReview = ({ dispatch, uid, item_id, review, edit = false }) => {
           {...register("reviewContent")}
           className={`${
             showInput ? "block" : "hidden"
-          } p-2 bg-gray-50 border border border-gray-300  text-gray-700 text-md font-poppins`}
+          } p-2 bg-gray-50 border border-gray-300 text-gray-700 text-md font-poppins`}
         />
+
         <div className="text-center">
           {showInput && (
             <button
               className="focus:outline-none bg-primary text-white px-4 py-2 rounded"
               type="submit"
-              onClick={() => {
-                dialog.close();
-              }}
             >
               Submit
             </button>
           )}
         </div>
       </form>
+
       <div className="flex justify-between">
         {!showInput && (
           <button
             className="focus:outline-none bg-primary text-white px-4 py-2 rounded"
-            onClick={() => {
-              setShowInput(true);
-            }}
+            onClick={() => setShowInput(true)}
+            type="button"
           >
             Edit
           </button>
         )}
 
         <button
-          className="focus:outline-none bg-black text-white  px-4 py-2 rounded"
-          onClick={() => {
-            dialog.close();
-          }}
+          className="focus:outline-none bg-black text-white px-4 py-2 rounded"
+          onClick={() => onClose?.()}
+          type="button"
         >
-          cancel
+          Cancel
         </button>
       </div>
     </div>

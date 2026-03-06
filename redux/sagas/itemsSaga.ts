@@ -3,7 +3,7 @@ import {call, put} from 'redux-saga/effects'
 import { getItemsError, getItemsLoading } from '@/redux/slices/appSlice';
 import { getItemsSuccess } from '@/redux/slices/itemsSlice';
 import { toast } from 'react-hot-toast';
-import { apiGetItems } from '@/pages/services/itemsService';
+import { apiGetItems } from '@/services/itemsService';
 
 
 function* getItemsSaga(){

@@ -1,4 +1,4 @@
-import { apiAddReview, apiDeleteReview, apiEditReview } from "@/pages/services/reviewsService";
+import { apiAddReview, apiDeleteReview, apiEditReview } from "@/services/reviewsService";
 import {  call } from "@redux-saga/core/effects";
 import { addReview, deleteReview, editReview,} from "@/redux/slices/reviewsSlice";
 import toast from "react-hot-toast";
